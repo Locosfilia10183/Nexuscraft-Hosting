@@ -1,0 +1,11 @@
+NEXUSCRAFT 2.0 – HYBRID DESIGN UPDATE
+
+- New hybrid visual language: professional hosting control panel + Minecraft-inspired 3D cube scene.
+- Refined dark navy / cyan / violet glass UI, gradients, depth and responsive cards.
+- Expanded desktop top navigation and mobile bottom navigation.
+- Added tariff overview section with clear demo/availability wording.
+- Improved iPhone PWA metadata, standalone display, app title, theme colors and cache versioning.
+- Updated app icon.
+
+Existing Node.js control plane, local node agent, authentication, credits, modpack, shop and admin logic were retained.
+No real payments, email delivery, public DNS or hosting availability are activated without the user's own configuration and infrastructure.

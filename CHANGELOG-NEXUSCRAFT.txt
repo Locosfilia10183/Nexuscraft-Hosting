@@ -1,0 +1,26 @@
+NEXUSCRAFT – GROSSAUSBAU
+========================
+
+Neu:
+- Modrinth-Modpack-Suche über die Modrinth-Projektbibliothek.
+- Modrinth .mrpack-Import inklusive Loader-Erkennung, Downloads, Hashprüfung und Overrides.
+- CurseForge-Modpack-Suche (API-Key erforderlich) und CurseForge-Export-ZIP-Import.
+- Modpack-Import per hochgeladener Datei und direkt aus der Plattform-Suche.
+- Backup vor Modpack-Wechsel; Backup-Auswahl und Wiederherstellung als Rollback.
+- Modrinth-Modpack-Updateprüfung und Update-Installation für gespeicherte Projekt-IDs.
+- Forge- und NeoForge-Serverinstaller mit automatischer Start-Argumentdatei-Erkennung.
+- Stripe Checkout-Grundlage mit signaturgeprüftem Webhook und idempotenter Gutschrift.
+- Shop: Credits-Pakete und 30-Tage-Premium.
+- Credits für RAM-/Spieler-Slot-Upgrades.
+- SMTP-Passwort-Reset mit gehashtem Einmal-Token (1 Stunde).
+- Multi-Node-Registry, Owner-Pairing mit HTTPS-Agent-URL/Token, Healthcheck und Least-Loaded-Zuweisung.
+- Caddy-Setupskripte für öffentliche HTTPS-Webseite und geschützte Node-Agent-Endpunkte.
+- Windows-Firewallskript für Caddy; Agent-Port bleibt lokal.
+- .env.example, dotenv-Unterstützung, Setup- und Produktionsdokumentation.
+
+Grenzen:
+- CurseForge braucht einen API-Key und manche Dateien können durch Plattformfreigaben blockiert sein.
+- Stripe, SMTP, DNS und Caddy brauchen eigene Konten, Schlüssel, Domain und Netzwerkzugriff.
+- Modrinth-Modpack-Updates werden nur für gespeicherte Modrinth-Projekt-IDs unterstützt. CurseForge-Modpacks können durch neuen Export aktualisiert und via Backup zurückgesetzt werden.
+- Multi-Node verteilt neue Server; Live-Migration, Failover, Cluster-Storage und automatische Node-Drain-Funktion sind nicht enthalten.
+- Keine Live-Tests mit echten Plattform-Keys, Stripe, SMTP, Domain oder mehreren physischen Nodes.

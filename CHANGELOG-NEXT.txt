@@ -1,0 +1,19 @@
+MINEFORGE – Erweiterung Crossplay und Server-Software
+
+Neu:
+- Paper, Purpur, Vanilla, Fabric, Quilt und Folia Installer-Anbindung
+- Java + Bedrock aktiviert automatischen GeyserMC/Floodgate-Download via Modrinth
+- Geyser/Floodgate werden nur bei kompatibler Plugin-Software installiert
+- Hinweise zu UDP 19132 und noch nicht automatisierten Installer-Typen
+
+Noch nicht implementiert:
+- Forge/NeoForge Installer-Ausführung und Spigot BuildTools
+- Portfreigabe-Assistent/Tunnel
+- Test mit echtem Minecraft-Server und Live-Netzwerk
+
+Vorhandene Installation sichern. Vor Update den Server stoppen und Welt-Backup erstellen.
+
+- Automatische Installation erforderlicher Modrinth-Abhängigkeiten (rekursiv, begrenzt).
+- Pro Server registrierte Mod-/Plugin-Liste in .mineforge-library.json.
+- Kompatibilitätsbasierte Update-Prüfung und Einzel-Updates in der Weboberfläche.
+- Modrinth-Modpack-Archive (.mrpack) und Overrides sind weiterhin nicht implementiert.

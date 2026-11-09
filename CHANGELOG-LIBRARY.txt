@@ -1,0 +1,13 @@
+MINEFORGE – Modrinth Library Update
+
+Added:
+- Live Modrinth search for plugins and mods.
+- Compatible release selection by Minecraft version and loader.
+- Server-side installation into plugins/ or mods/ while server is stopped.
+- Download checksum verification (SHA-1, SHA-256, SHA-512).
+- Mobile-friendly search/results UI and server selector.
+
+Not included yet:
+- Modpack import/deployment and dependency resolution.
+- Automatic update/rollback manager.
+- End-to-end test against a live Minecraft server.
