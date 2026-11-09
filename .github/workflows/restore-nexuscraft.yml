@@ -3,6 +3,9 @@ name: Restore NEXUSCRAFT folder structure
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
