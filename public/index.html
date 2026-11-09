@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="/manifest.json"><link rel="icon" href="/icon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#07060d">
+<meta name="color-scheme" content="dark"><meta name="apple-mobile-web-app-title" content="NEXUSCRAFT"><meta name="mobile-web-app-capable" content="yes"><meta name="description" content="NEXUSCRAFT – Minecraft Server Hosting, Modpacks und Serververwaltung.">
+<title>NEXUSCRAFT – Minecraft Hosting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07060d;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.12);--tx:#ecebf5;--mut:#9a98b3;--pu:#8b5cf6;--bl:#3b82f6;--cy:#22d3ee;--ok:#34d399;--warn:#fbbf24;
+--grad:linear-gradient(135deg,var(--pu),var(--bl) 55%,var(--cy));
+--d:'Chakra Petch','Trebuchet MS',sans-serif;--b:'Hanken Grotesk',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:radial-gradient(900px 500px at 80% -10%,rgba(139,92,246,.22),transparent),radial-gradient(700px 400px at -10% 30%,rgba(34,211,238,.12),transparent),var(--bg);color:var(--tx);font:400 16px/1.55 var(--b);min-height:100vh;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+h1,h2,h3{font-family:var(--d);line-height:1.1;margin:0}
+h1{font-size:clamp(2.3rem,9vw,4.6rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.6rem;margin-bottom:.4rem}h3{font-size:1.1rem}
+p{margin:.4rem 0 0;color:var(--mut);max-width:62ch}
+a{color:var(--cy)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;backdrop-filter:blur(14px);background:rgba(7,6,13,.7);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font:700 1.15rem var(--d);letter-spacing:.04em;display:flex;gap:9px;align-items:center;text-decoration:none;color:var(--tx)}
+.logo i{width:22px;height:22px;background:var(--grad);display:block;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.btn{font:700 .95rem var(--b);border:0;border-radius:12px;padding:13px 20px;min-height:46px;cursor:pointer;color:#fff;background:var(--grad);text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn.ghost{background:var(--panel);border:1px solid var(--line);color:var(--tx)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn:focus-visible,input:focus-visible,select:focus-visible,nav a:focus-visible{outline:2px solid var(--cy);outline-offset:2px}
+.view{display:none;padding:28px 0 40px}.view.on{display:block}
+.hero{display:grid;gap:26px;align-items:center;padding-top:10px}
+@media(min-width:760px){.hero{grid-template-columns:1.2fr .8fr}}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.scene{height:260px;display:grid;place-items:center;perspective:700px;position:relative}
+.cube{width:120px;height:120px;position:relative;transform-style:preserve-3d;animation:spin 14s linear infinite}
+.cube b{position:absolute;inset:0;border:2px solid rgba(255,255,255,.25);background-size:30px 30px}
+.cube b:nth-child(1){transform:translateZ(60px);background:linear-gradient(#34a853 0 30%,#7a5230 30%);background-size:100% 100%}
+.cube b:nth-child(2){transform:rotateY(90deg) translateZ(60px);background:linear-gradient(#2d8f47 0 30%,#6b4627 30%)}
+.cube b:nth-child(3){transform:rotateY(180deg) translateZ(60px);background:linear-gradient(#34a853 0 30%,#7a5230 30%)}
+.cube b:nth-child(4){transform:rotateY(-90deg) translateZ(60px);background:linear-gradient(#2d8f47 0 30%,#6b4627 30%)}
+.cube b:nth-child(5){transform:rotateX(90deg) translateZ(60px);background:#4ade80}
+.cube b:nth-child(6){transform:rotateX(-90deg) translateZ(60px);background:#5a3b20}
+.scene::after{content:"";position:absolute;bottom:18px;width:170px;height:30px;background:radial-gradient(closest-side,rgba(139,92,246,.55),transparent)}
+@keyframes spin{from{transform:rotateX(-24deg) rotateY(0)}to{transform:rotateX(-24deg) rotateY(360deg)}}
+@media(prefers-reduced-motion:reduce){.cube{animation:none;transform:rotateX(-24deg) rotateY(35deg)}}
+.grid{display:grid;gap:12px;margin-top:18px}
+@media(min-width:700px){.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;backdrop-filter:blur(10px)}
+.card.big{border-radius:22px}
+.tag{display:inline-block;font:700 .75rem var(--b);padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--mut)}
+.tag.ok{color:var(--ok);border-color:rgba(52,211,153,.4)}.tag.warn{color:var(--warn);border-color:rgba(251,191,36,.4)}
+section{margin-top:44px}
+details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:700}
+label{display:block;font-weight:500;margin:14px 0 6px}
+input,select{width:100%;min-height:48px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--tx);padding:10px 14px;font:inherit}
+select option{background:#14122a}
+.note{border-left:3px solid var(--warn);padding:10px 14px;background:rgba(251,191,36,.07);border-radius:0 12px 12px 0;color:#e9d9a6;margin:14px 0;font-size:.93rem}
+.empty{text-align:center;padding:34px 16px}.empty h3{margin-bottom:6px}
+.empty p{margin-inline:auto}
+.stat{font:700 1.7rem var(--d)}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;justify-content:space-around;background:rgba(10,9,20,.88);backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav a{flex:1;text-align:center;color:var(--mut);text-decoration:none;font-size:.74rem;padding:7px 2px;border-radius:10px;min-height:48px}
+nav a svg{display:block;margin:0 auto 2px}
+nav a.on{color:var(--cy)}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0;color:var(--mut);font-size:.86rem}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(90px + env(safe-area-inset-bottom,0px));background:#17142e;border:1px solid var(--line);padding:10px 16px;border-radius:12px;z-index:9;display:none}
+
+/* NEXUSCRAFT 2.0 — hybrid gaming world + professional control panel */
+:root{--bg:#070b12;--panel:rgba(13,22,35,.76);--line:rgba(128,190,230,.17);--tx:#edf7ff;--mut:#9db2c7;--pu:#8b5cf6;--bl:#3578ff;--cy:#35e0df;--grad:linear-gradient(120deg,#8b5cf6 0%,#3578ff 52%,#35e0df 100%)}
+body{background:radial-gradient(ellipse 70% 42% at 78% -8%,rgba(62,104,255,.25),transparent 70%),radial-gradient(ellipse 55% 36% at 4% 22%,rgba(45,220,205,.13),transparent 72%),linear-gradient(180deg,#080d16,#070b12 58%,#090d18);background-attachment:fixed}
+header{background:rgba(6,11,19,.82);border-bottom-color:rgba(111,179,224,.2);box-shadow:0 10px 40px rgba(0,0,0,.18)}
+header .wrap{height:68px;gap:20px}.logo{gap:11px;letter-spacing:.07em}.logo i{width:27px;height:27px;box-shadow:0 0 24px rgba(53,224,223,.42)}.logo small{font:600 .58rem var(--b);letter-spacing:.22em;color:#6e91aa;display:block;margin-left:2px}
+.top-links{display:flex;align-items:center;gap:clamp(10px,2vw,26px);margin-left:auto}.top-links a{font-size:.86rem;color:#a9bfd2;text-decoration:none}.top-links a:hover{color:var(--cy)}
+.hero{position:relative;isolation:isolate;padding:30px 26px;border:1px solid rgba(115,183,232,.2);border-radius:28px;background:linear-gradient(115deg,rgba(14,25,42,.9),rgba(16,25,43,.53));box-shadow:0 24px 90px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.06);overflow:hidden}
+.hero:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(65,202,226,.055),transparent 75%);pointer-events:none}.hero h1{max-width:720px;text-shadow:0 8px 38px rgba(62,124,255,.22)}
+.eyebrow{font:700 .7rem var(--b);letter-spacing:.2em;color:var(--cy)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.card{background:linear-gradient(145deg,rgba(20,34,53,.82),rgba(11,19,32,.84));border-color:rgba(126,180,218,.17);box-shadow:0 12px 34px rgba(0,0,0,.14),inset 0 1px rgba(255,255,255,.035);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.card:hover{transform:translateY(-3px);border-color:rgba(53,224,223,.35);box-shadow:0 18px 44px rgba(0,0,0,.24),0 0 25px rgba(53,224,223,.055)}
+.plan-card{display:flex;flex-direction:column;min-height:310px}.plan-card h3{font-size:1.45rem;margin-top:14px}.plan-price{font:700 1.8rem var(--d);margin-top:12px;color:#fff}.plan-price small{font:500 .8rem var(--b);color:var(--mut)}.plan-card ul{padding-left:18px;color:#b9cad9;line-height:1.9;margin:14px 0 20px}.plan-card .btn{margin-top:auto}.plan-card.featured{border-color:rgba(53,224,223,.42);background:linear-gradient(150deg,rgba(35,72,91,.65),rgba(27,26,58,.86));box-shadow:0 18px 60px rgba(31,132,183,.12)}
+.scene{min-height:290px}.cube{filter:drop-shadow(0 18px 32px rgba(48,222,220,.2));width:138px;height:138px}.cube b{backface-visibility:visible;border-color:rgba(160,240,255,.42);box-shadow:inset 0 0 30px rgba(255,255,255,.08)}.scene:before{content:"";position:absolute;width:250px;height:250px;border:1px solid rgba(65,190,220,.16);border-radius:50%;transform:rotateX(68deg);box-shadow:0 0 40px rgba(53,224,223,.08)}.scene:after{bottom:0;width:220px;height:46px}
+.btn{box-shadow:0 8px 24px rgba(53,120,255,.16);transition:transform .18s ease,filter .18s ease}.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}.btn.ghost{box-shadow:none;background:rgba(255,255,255,.045)}
+.view{padding-top:32px}.view>h2{font-size:2rem}.tag{letter-spacing:.04em;background:rgba(255,255,255,.025)}
+nav{background:rgba(6,12,21,.92);border-top-color:rgba(112,180,220,.2);box-shadow:0 -12px 42px rgba(0,0,0,.26)}nav a{font-weight:600}nav a.on{background:rgba(53,224,223,.09);color:var(--cy)}
+input,select{background:rgba(4,10,18,.65);border-color:rgba(126,180,218,.2)}input:focus,select:focus{border-color:var(--cy);box-shadow:0 0 0 3px rgba(53,224,223,.1)}
+.note{background:rgba(251,191,36,.055)}
+@media(min-width:760px){.wrap{max-width:1180px}.hero{grid-template-columns:1.15fr .85fr;padding:48px 42px;min-height:380px}.grid{gap:16px}.view{padding-top:42px}.top-links{display:flex}nav{left:50%;right:auto;transform:translateX(-50%);width:min(680px,calc(100% - 40px));bottom:18px;border:1px solid var(--line);border-radius:18px;padding:8px 10px;box-shadow:0 14px 50px rgba(0,0,0,.45)}body{padding-bottom:110px}}
+@media(max-width:759px){.top-links{display:none}header .wrap{height:60px}.logo small{display:none}.hero{padding:24px 18px;border-radius:22px;gap:4px}.scene{height:210px;min-height:210px}.cube{width:112px;height:112px}.cube b:nth-child(1){transform:translateZ(56px)}.cube b:nth-child(2){transform:rotateY(90deg) translateZ(56px)}.cube b:nth-child(3){transform:rotateY(180deg) translateZ(56px)}.cube b:nth-child(4){transform:rotateY(-90deg) translateZ(56px)}.cube b:nth-child(5){transform:rotateX(90deg) translateZ(56px)}.cube b:nth-child(6){transform:rotateX(-90deg) translateZ(56px)}.plan-card{min-height:0}.view{padding-top:24px}}
+@media(prefers-reduced-motion:reduce){.card,.btn{transition:none}.card:hover,.btn:hover{transform:none}}
+
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#home"><i></i><span>NEXUSCRAFT</span><small>HOSTING NETWORK</small></a><div class="top-links"><a href="#home">Übersicht</a><a href="#plans">Tarife</a><a href="#mods">Modpacks</a><a href="#dashboard">Meine Server</a><a href="#admin">Admin</a></div><a class="btn ghost account-btn" href="#login" style="min-height:38px;padding:8px 14px">Konto <span aria-hidden="true">↗</span></a></div></header>
+
+<main class="wrap">
+<!-- HOME -->
+<div class="view on" id="home">
+ <div class="hero">
+  <div>
+   <span class="tag warn">Vorschau</span>
+   <h1 style="margin-top:14px">Your World. Your Server. Completely Free.</h1>
+   <p>Plane deinen Minecraft-Server ohne Kreditkarte und ohne Abo. Java und Bedrock spielen zusammen, wenn Version und Plugins es erlauben.</p>
+   <div class="cta"><a class="btn" href="#create">Create Your Free Server</a><a class="btn ghost" href="#mods">Browse Mods</a></div>
+  </div>
+  <div class="scene" aria-hidden="true"><div class="cube"><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
+ </div>
+
+ <section><h2>Was NEXUSCRAFT ehrlich bietet</h2>
+  <div class="grid c3">
+   <div class="card"><h3>Java + Bedrock</h3><p>GeyserMC und Floodgate werden bei kompatibler Software automatisch installiert. UDP-Port 19132 muss erreichbar sein.</p></div>
+   <div class="card"><h3>Keine Fake-Zahlen</h3><p>Uptime, Spielerzahlen und Auslastung erscheinen erst, wenn ein echter Hosting-Node sie meldet.</p></div>
+   <div class="card"><h3>Dein Gerät, deine Regeln</h3><p>Server laufen auf Geräten, die du verbindest. Wir versprechen keine unbegrenzte Hardware.</p></div>
+  </div>
+ </section>
+
+ <section id="mods"><h2>Modrinth-Bibliothek</h2>
+  <div class="card big"><p>Suche echte Mods und Plugins aus Modrinth. Installationen landen im passenden Ordner und benötigen einen Server-Neustart.</p>
+   <label for="lib-type">Kategorie</label><select id="lib-type"><option value="plugin">Plugins (Paper/Purpur/Folia)</option><option value="mod">Mods (Fabric/Forge/Quilt)</option></select>
+   <label for="lib-query">Suche</label><input id="lib-query" placeholder="z. B. EssentialsX, WorldEdit, Sodium">
+   <label for="lib-server">Auf welchem Server installieren?</label><select id="lib-server"><option value="">Bitte anmelden und Server auswählen</option></select>
+   <div class="cta"><button class="btn" id="lib-search">Suchen</button><button class="btn ghost" id="lib-updates">Updates prüfen</button></div><div id="lib-update-results" style="margin-top:12px"></div><div id="lib-results" style="margin-top:14px"><p>Suchbegriff eingeben und auf Suchen tippen.</p></div>
+   <p class="note">Wichtig: Der Server muss gestoppt sein. Erforderliche Modrinth-Abhängigkeiten werden automatisch mitinstalliert. Updates kannst du serverbezogen prüfen und einzeln einspielen. Der Server benötigt danach einen Neustart.</p>
+   <hr style="border-color:var(--line);margin:22px 0">
+   <h3>Komplette Modpacks installieren</h3>
+   <p>Wähle einen Server und lade ein Modrinth-.mrpack oder CurseForge-Export-.zip hoch. Der Server muss gestoppt sein. Vor dem Wechsel wird ein Backup angelegt.</p>
+   <label for="pack-platform">Plattform</label><select id="pack-platform"><option value="modrinth">Modrinth (.mrpack)</option><option value="curseforge">CurseForge (Export .zip)</option></select>
+   <label for="pack-query">Modpack suchen</label><input id="pack-query" placeholder="z. B. Better MC, RLCraft, All the Mods">
+   <div class="cta"><button class="btn ghost" id="pack-search">Modpacks suchen</button><button class="btn ghost" id="pack-check-update">Modpack-Update prüfen</button></div>
+   <div id="pack-search-results" style="margin:12px 0"></div>
+   <label for="pack-file">Modpack-Datei (max. 250 MB)</label><input id="pack-file" type="file" accept=".mrpack,.zip">
+   <div class="cta"><button class="btn" id="pack-install">Modpack installieren</button><button class="btn ghost" id="pack-backups">Backups / Versionen anzeigen</button></div>
+   <div id="pack-status" class="note" style="margin-top:12px"></div>
+   <div id="pack-backup-list" style="margin-top:12px"></div>
+   <p class="note">CurseForge benötigt zusätzlich den API-Key CURSEFORGE_API_KEY auf dem Node. Nicht jedes CurseForge-Client-Exportarchiv enthält Serverdateien; manche Mods sind nur über den offiziellen Launcher erhältlich. Vorhandene Weltordner werden bei einem Modpack-Wechsel nicht absichtlich gelöscht, trotzdem vorher ein Backup sichern.</p>
+  </div>
+ </section>
+
+ <section><h2>Vergleich</h2>
+  <div class="grid c2">
+   <div class="card"><h3>NEXUSCRAFT</h3><p>Free- und Premium-Angebot, Credits-Shop, Modpacks und Java-/Bedrock-Crossplay auf kompatiblen Nodes.</p></div>
+   <div class="card"><h3>Was noch fehlt</h3><p>Ein verbundener Node. Ohne ihn lassen sich Server nur als Entwurf speichern.</p></div>
+  </div>
+ </section>
+
+ <section id="plans"><div class="section-head"><div><span class="eyebrow">FLEXIBLE SERVER POWER</span><h2>Wähle deinen Start</h2><p>Tarifideen zur Orientierung. Verfügbarkeit und echte Abrechnung hängen von deiner eingerichteten Infrastruktur ab.</p></div><span class="tag ok">Free + Premium</span></div>
+  <div class="grid c3 plan-grid">
+   <article class="card plan-card"><span class="tag">START</span><h3>Free</h3><div class="plan-price">0 € <small>/ Monat</small></div><p>Zum Testen und Planen deines Servers.</p><ul><li>Server-Konfiguration</li><li>Modrinth-Bibliothek</li><li>Community-Funktionen</li></ul><a class="btn ghost" href="#create">Kostenlos starten</a></article>
+   <article class="card plan-card featured"><span class="tag ok">BELIEBT</span><h3>Premium</h3><div class="plan-price">Coming soon</div><p>Mehr Spielraum für deine Projekte.</p><ul><li>Premium-Funktionen</li><li>Credits-Upgrades</li><li>Priorisierte Verwaltung</li></ul><a class="btn" href="#login">Premium ansehen</a></article>
+   <article class="card plan-card"><span class="tag">CUSTOM</span><h3>Eigene Hardware</h3><div class="plan-price">Dein PC</div><p>Nutze deinen eigenen Windows-Hosting-PC.</p><ul><li>Lokaler Node-Agent</li><li>Volle Kontrolle</li><li>Keine fremde Hardware nötig</li></ul><a class="btn ghost" href="#dashboard">Node prüfen</a></article>
+  </div>
+ </section>
+
+ <section><h2>FAQ</h2>
+  <details><summary>Ist wirklich alles kostenlos?</summary><p>Ein Free-Tarif ist vorgesehen. Credits und Premium können kostenpflichtig angeboten werden; echte Zahlungen funktionieren erst nach Einrichtung eines Stripe-Kontos und der Webhook-Schlüssel.</p></details>
+  <details><summary>Warum startet mein Server noch nicht?</summary><p>Ein Minecraft-Server braucht ein Gerät, das dauerhaft läuft. Sobald ein Node verbunden ist, kannst du starten.</p></details>
+  <details><summary>Kann ich die Seite aufs iPhone legen?</summary><p>Ja. In Safari auf Teilen tippen und „Zum Home-Bildschirm“ wählen.</p></details>
+ </section>
+</div>
+
+<!-- CREATE -->
+<div class="view" id="create">
+ <h2>Server konfigurieren</h2>
+ <p id="where">Zum Speichern bitte unter „Konto“ anmelden.</p>
+ <div class="card big" style="margin-top:16px">
+  <label for="f-name">Servername</label><input id="f-name" maxlength="40" placeholder="Mein Survival-Server">
+  <label for="f-desc">Beschreibung</label><input id="f-desc" maxlength="120" placeholder="Kurz sagen, worum es geht">
+  <label for="f-ed">Edition</label>
+  <select id="f-ed"><option value="java">Java</option><option value="crossplay">Java + Bedrock (Crossplay)</option><option value="bedrock">Bedrock</option></select>
+  <label for="f-sw">Server-Software</label>
+  <select id="f-sw"><option>Paper</option><option>Purpur</option><option>Vanilla</option><option>Fabric</option><option>Forge</option><option>NeoForge</option><option>Quilt</option><option>Spigot</option><option>Folia</option></select>
+  <label for="f-ver">Minecraft-Version</label><input id="f-ver" placeholder="z. B. 1.21.4">
+  <label for="f-pl">Maximale Spieler</label><input id="f-pl" type="number" min="1" max="100" value="10">
+  <div class="note">Server-Software wird abhängig von Version und Installer-Unterstützung eingerichtet. Forge/NeoForge/Spigot sind in dieser Ausgabe noch nicht automatisiert.</div>
+  <div class="note">Automatisch installierbar: Paper, Purpur, Vanilla, Fabric, Quilt und Folia. Forge/NeoForge/Spigot benötigen noch einen separaten Installer-/Build-Prozess.</div>
+  <div class="cta"><button class="btn" id="save">Entwurf speichern</button><button class="btn ghost" disabled>Server erstellen</button></div>
+  <p id="why">Speichere zuerst einen Entwurf. Erstellt wird er danach im Dashboard, sobald dein Hosting-Node online ist.</p>
+ </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="view" id="dashboard">
+ <h2>Deine Server</h2>
+ <div class="card empty" id="drafts-empty" style="margin-top:14px"><h3>Noch keine Entwürfe</h3><p>Erstelle eine Konfiguration, dann erscheint sie hier.</p><div class="cta" style="justify-content:center"><a class="btn" href="#create">Server konfigurieren</a></div></div>
+ <div id="nodebadge"></div>
+ <div id="servers"></div>
+ <div id="drafts"></div>
+ <div class="grid c3">
+  <div class="card"><span class="tag">CPU</span><div class="stat">–</div><p>Keine Messwerte</p></div>
+  <div class="card"><span class="tag">RAM</span><div class="stat">–</div><p>Keine Messwerte</p></div>
+  <div class="card"><span class="tag">Spieler</span><div class="stat">–</div><p>Keine Messwerte</p></div>
+ </div>
+ <div class="note">Ressourcenanzeigen zeigen nur Werte, die der lokale Node tatsächlich liefern kann. Bedrock-Zugriff erfordert eine erreichbare UDP-Portfreigabe.</div>
+</div>
+
+<!-- ADMIN -->
+<div class="view" id="admin">
+ <h2>Admin-Bereich</h2>
+ <div class="note" id="adminnote">Owner/Admin: Nutzer, Credits, Premium, Limits und Audit-Protokoll verwalten.</div>
+ <div id="users"></div><div class="card"><h3>Systemverwaltung</h3><p>Owner-Einstellungen und Sicherheitsprotokoll.</p><div class="cta"><button class="btn ghost" id="admin-settings">Limits einstellen</button><button class="btn ghost" id="admin-audit">Audit-Log laden</button></div><pre id="audit-output" style="white-space:pre-wrap;max-height:300px;overflow:auto"></pre></div>
+ <div class="card big" style="margin:14px 0"><h3>Hosting-Nodes verbinden</h3><p>Nur Owner. Node-Agent muss per HTTPS erreichbar und auf den Control-Plane-IP-Bereich beschränkt sein.</p><label for="node-name">Node-Name</label><input id="node-name" placeholder="Hamburg-01"><label for="node-url">Agent-URL (HTTPS)</label><input id="node-url" placeholder="https://node01.example.com:3100"><label for="node-token">Agent-Token</label><input id="node-token" type="password" placeholder="Token aus agent-config.json"><button class="btn" id="node-add">Node verbinden</button><div id="node-list"></div></div>
+ <div class="grid c3">
+  <div class="card"><h3>Nutzer</h3><div class="stat" id="ucount">–</div></div>
+  <div class="card"><h3>Hosting-Nodes</h3><div class="stat">0</div><p>Kein Node verbunden.</p></div>
+  <div class="card"><h3>Audit-Log</h3><p>Über Systemverwaltung abrufbar.</p></div>
+ </div>
+</div>
+
+<!-- LOGIN -->
+<div class="view" id="login">
+ <h2>Konto</h2>
+ <div class="card big" id="out" style="margin-top:14px">
+  <label for="a-m">E-Mail</label><input id="a-m" type="email" autocomplete="email">
+  <label for="a-u" id="a-ul" hidden>Benutzername</label><input id="a-u" autocomplete="username" hidden>
+  <label for="a-p">Passwort (mind. 8 Zeichen)</label><input id="a-p" type="password" autocomplete="current-password">
+  <div class="cta"><button class="btn" id="a-go">Anmelden</button><button class="btn ghost" id="a-sw">Neu registrieren</button></div>
+  <p id="a-msg"></p>
+  <button class="btn ghost" id="forgot-pass" type="button">Passwort vergessen?</button>
+  <div id="reset-panel" hidden><label for="reset-token">Reset-Token (aus E-Mail-Link)</label><input id="reset-token"><label for="reset-new">Neues Passwort</label><input id="reset-new" type="password"><button class="btn" id="reset-submit">Passwort zurücksetzen</button></div>
+ </div>
+ <div class="card big" id="in" style="margin-top:14px" hidden><span class="tag ok" id="role"></span><h3 id="uname" style="margin-top:10px"></h3><p id="umail"></p><p id="account-balance"></p><h3>Shop</h3><div id="shop-products" class="cta"><button class="btn ghost" data-buy="credits_1000">1.000 Credits – 4,99 €</button><button class="btn ghost" data-buy="credits_5000">5.000 Credits – 19,99 €</button><button class="btn ghost" data-buy="premium_30">Premium 30 Tage – 4,99 €</button></div><div class="cta"><button class="btn ghost" id="a-out">Abmelden</button></div></div>
+ <div class="note">Passwort-Reset und Shop benötigen die SMTP- bzw. Stripe-Schlüssel in der Server-Konfiguration. Erstes Konto wird Owner.</div>
+</div>
+
+<footer>NEXUSCRAFT ist ein unabhängiges Fan-Projekt und nicht mit Mojang oder Microsoft verbunden. Kontakt und Impressum werden vor dem Start ergänzt.</footer>
+</main>
+
+<nav aria-label="Hauptnavigation">
+ <a href="#home" data-v="home"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3z"/></svg>Home</a>
+ <a href="#mods" data-v="mods"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>Mods</a>
+ <a href="#create" data-v="create"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Erstellen</a>
+ <a href="#dashboard" data-v="dashboard"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/></svg>Server</a>
+ <a href="#login" data-v="login"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3-7 8-7s8 3 8 7"/></svg>Konto</a>
+</nav>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+var ME=null,drafts=[];
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function toast(t){var el=$('toast');el.textContent=t;el.style.display='block';setTimeout(function(){el.style.display='none'},2600)}
+function api(m,u,b){return fetch(u,{method:m,credentials:'same-origin',headers:b?{'Content-Type':'application/json'}:{'Content-Type':'application/json'},body:b?JSON.stringify(b):(m==='GET'?undefined:'{}')}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'Fehler');return j})})}
+var NODE={online:false},SV=[],OPEN={},LOGS={};
+var ST={stopped:'Aus',starting:'Startet',running:'Läuft',stopping:'Stoppt',restarting:'Startet neu',crashed:'Abgestürzt',installing:'Wird installiert'};
+function renderDrafts(){$('drafts-empty').style.display=(drafts.length||SV.length)?'none':'block';
+ $('drafts').innerHTML=drafts.map(function(x){var i=esc(x.id);return '<div class="card" style="margin-top:12px"><h3>'+esc(x.name)+'</h3><p>'+esc(x.sw)+' '+esc(x.ver||'?')+' · '+esc(x.ed)+' · max. '+esc(x.pl)+' Spieler</p><p><span class="tag warn">Entwurf</span></p>'
+ +'<label>Arbeitsspeicher</label><select data-ram="'+i+'"><option value="1024">1 GB</option><option value="2048" selected>2 GB</option><option value="4096">4 GB</option></select>'
+ +'<label style="display:flex;gap:10px;align-items:center;font-weight:400"><input type="checkbox" data-eula="'+i+'" style="width:22px;min-height:22px"> Ich akzeptiere die Minecraft-EULA (aka.ms/MinecraftEULA)</label>'
+ +'<div class="cta"><button class="btn" data-mk="'+i+'"'+(NODE.online?'':' disabled')+'>Server erstellen</button><button class="btn ghost" data-del="'+i+'">Entwurf löschen</button></div>'+(NODE.online?'':'<p>Kein Hosting-Node online (PC aus oder Agent nicht gestartet).</p>')+'</div>'}).join('')}
+function renderServers(){if(document.activeElement&&$('servers').contains(document.activeElement))return;
+ $('nodebadge').innerHTML=ME?'<span class="tag '+(NODE.online?'ok':'warn')+'">Hosting-Node: '+(NODE.online?'online':'offline')+'</span>':'';
+ $('servers').innerHTML=SV.map(function(s){var i=s.info,st=i?(ST[i.status]||i.status):'Node offline',on=i&&(i.status==='running'||i.status==='starting'),i2=esc(s.id);
+ return '<div class="card" style="margin-top:12px"><h3>'+esc(s.name)+'</h3><p><span class="tag '+(i&&i.status==='running'?'ok':'warn')+'">'+esc(st)+'</span>'+(i?' <span class="tag">Port '+esc(i.port)+'</span> <span class="tag">'+esc(i.version)+' · '+esc(i.ram)+' MB</span>':'')+'</p>'+(i&&i.error?'<p>'+esc(i.error)+'</p>':'')
+ +'<div class="cta"><button class="btn" data-act="start" data-s="'+i2+'"'+(!i||on||i.status==='installing'?' disabled':'')+'>Starten</button><button class="btn ghost" data-act="stop" data-s="'+i2+'"'+(on?'':' disabled')+'>Stoppen</button><button class="btn ghost" data-act="backup" data-s="'+i2+'"'+(i?'':' disabled')+'>Backup</button><button class="btn ghost" data-act="console" data-s="'+i2+'">Konsole</button><button class="btn ghost" data-manage="rename" data-s="'+i2+'">Umbenennen</button><button class="btn ghost" data-manage="resources" data-s="'+i2+'">RAM / Spieler</button><button class="btn ghost" data-manage="credit-upgrade" data-s="'+i2+'">Upgrade mit Credits</button><button class="btn ghost" data-manage="properties" data-s="'+i2+'">Einstellungen</button><button class="btn ghost" data-manage="players" data-s="'+i2+'">Spieler</button><button class="btn ghost" data-manage="players-history" data-s="'+i2+'">Spielerverlauf</button><button class="btn ghost" data-manage="metrics" data-s="'+i2+'">Metriken</button><button class="btn ghost" data-manage="file-upload" data-s="'+i2+'">Datei hochladen</button><button class="btn ghost" data-manage="file-download" data-s="'+i2+'">Datei herunterladen</button><button class="btn ghost" data-manage="backups" data-s="'+i2+'">Backups</button><button class="btn ghost" data-manage="restart" data-s="'+i2+'">Neustart</button><button class="btn ghost" data-manage="delete" data-s="'+i2+'" style="border-color:#b44;color:#f88">Löschen</button></div>'
+ +(OPEN[s.id]?'<pre style="background:#000;border:1px solid var(--line);border-radius:12px;padding:10px;max-height:220px;overflow:auto;font-size:.78rem;white-space:pre-wrap">'+esc((LOGS[s.id]||[]).join('\n')||'Noch keine Ausgabe')+'</pre><div class="cta"><input data-cmd="'+i2+'" placeholder="z. B. list, say Hallo" style="flex:1" autocapitalize="off"><button class="btn" data-act="send" data-s="'+i2+'">Senden</button></div>':'')+'</div>'}).join('');
+ document.querySelectorAll('#servers pre').forEach(function(p){p.scrollTop=p.scrollHeight});renderDrafts()}
+function loadServers(){if(!ME)return;api('GET','/api/node').then(function(n){NODE=n}).catch(function(){NODE={online:false}}).then(function(){return api('GET','/api/servers')}).then(function(j){SV=j.servers;return Promise.all(SV.filter(function(s){return OPEN[s.id]&&s.info}).map(function(s){return api('GET','/api/servers/'+s.id+'/log').then(function(l){LOGS[s.id]=l.log}).catch(function(){})}))}).then(function(){renderServers();refreshLibraryServers()}).catch(function(){renderServers();refreshLibraryServers()})}
+
+$('servers').addEventListener('click',function(e){
+ var action=e.target.getAttribute('data-manage'),id=e.target.getAttribute('data-s');if(!action)return;
+ var endpoint='/api/servers/'+id+'/'+action;
+ function call(method,data){return api(method,endpoint,data)}
+
+ if(action==='metrics'){call('GET').then(function(j){alert('Status: '+j.status+'\nCPU: '+(j.cpuPercent===null?'noch keine Messung':j.cpuPercent+' %')+'\nZugewiesener RAM: '+j.ramAssignedMB+' MB\nFreier Host-RAM: '+j.hostFreeMemMB+' MB\nSpeicher: '+Math.round(j.diskBytes/1024/1024)+' MB\nUptime: '+Math.round(j.uptimeMs/60000)+' Minuten')}).catch(function(x){toast(x.message)});return}
+ if(action==='players-history'){call('GET').then(function(j){var rows=j.history||[];alert(rows.length?rows.slice(-20).map(function(x){return new Date(x.at).toLocaleString('de-DE')+' · '+x.count+'/'+x.max+' Spieler'+(x.players&&x.players.length?' · '+x.players.join(', '):'')}).join('\n'):'Noch keine Spielerverlauf-Messungen')}).catch(function(x){toast(x.message)});return}
+ if(action==='file-upload'){var inp=document.createElement('input');inp.type='file';inp.onchange=async function(){var f=inp.files&&inp.files[0];if(!f){inp.remove();return}if(f.size>100*1024*1024){toast('Maximal 100 MB');return}var rel=prompt('Zielpfad im Serverordner (z. B. plugins/'+f.name+')',f.name);if(!rel)return;try{var dataBase64=await fileToBase64(f);await api('POST','/api/servers/'+id+'/file-upload',{path:rel,dataBase64:dataBase64});toast('Datei hochgeladen. Server bleibt gestoppt.')}catch(e){toast(e.message)}finally{inp.remove()}};document.body.appendChild(inp);inp.click();return}
+ if(action==='file-download'){var rel=prompt('Dateipfad im Serverordner (z. B. plugins/example.jar):');if(!rel)return;api('GET','/api/servers/'+id+'/file-download?path='+encodeURIComponent(rel)).then(function(j){var raw=atob(j.dataBase64),arr=new Uint8Array(raw.length);for(var q=0;q<raw.length;q++)arr[q]=raw.charCodeAt(q);var blob=new Blob([arr]),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=j.name;a.click();URL.revokeObjectURL(a.href)}).catch(function(x){toast(x.message)});return}
+ if(action==='credit-upgrade'){var addRam=Number(prompt('RAM zusätzlich in MB (Vielfaches von 512; 0 = kein RAM):','512'));if(!Number.isInteger(addRam)||addRam<0)return;var addSlots=Number(prompt('Spieler-Slots zusätzlich (0 = keine):','10'));if(!Number.isInteger(addSlots)||addSlots<0)return;api('POST','/api/shop/upgrade',{serverId:id,ramAdd:addRam,slotsAdd:addSlots}).then(function(j){toast('Upgrade gekauft. Kosten: '+j.cost+' Credits. Rest: '+j.credits);loadServers()}).catch(function(x){toast(x.message)});return}
+ if(action==='rename'){var name=prompt('Neuer Servername:');if(!name)return;call('POST',{name:name}).then(function(){toast('Name geändert');loadServers()}).catch(function(x){toast(x.message)});return}
+ if(action==='resources'){var ram=prompt('RAM in MB (z. B. 2048):','2048');if(ram===null)return;var players=prompt('Maximale Spieler:','20');if(players===null)return;call('POST',{ram:Number(ram),maxPlayers:Number(players)}).then(function(){toast('Ressourcen gespeichert. RAM-Änderung erfordert Neustart.');loadServers()}).catch(function(x){toast(x.message)});return}
+ if(action==='restart'){if(!confirm('Server wirklich neu starten?'))return;call('POST',{}).then(function(){toast('Neustart angefordert');loadServers()}).catch(function(x){toast(x.message)});return}
+ if(action==='delete'){if(!confirm('Server und alle lokalen Dateien endgültig löschen? Erstelle vorher ein Backup.'))return;call('POST',{}).then(function(){toast('Server gelöscht');loadServers()}).catch(function(x){toast(x.message)});return}
+ if(action==='players'){call('GET').then(function(j){alert(j.online?'Online: '+j.count+'/'+j.max+'\\n'+(j.players.join(', ')||'Keine Spielernamen erkannt'):'Server ist offline')}).catch(function(x){toast(x.message)});return}
+ if(action==='backups'){call('GET').then(function(j){var list=j.backups||[];if(!list.length){alert('Noch keine Backups vorhanden.');return}var menu=list.map(function(b,i){return (i+1)+'. '+b.name+' ('+Math.round(b.size/1024)+' KB)'}).join('\\n');var pick=prompt('Backups:\\n'+menu+'\\n\\nAktion: Nummer = wiederherstellen, d1 = herunterladen, x1 = löschen');if(!pick)return;var mode=pick.charAt(0),num=mode==='d'||mode==='x'?Number(pick.slice(1)):Number(pick),b=list[num-1];if(!b){toast('Ungültige Auswahl');return}if(mode==='d'){call('POST',{file:b.name}).then(function(r){var raw=atob(r.data),arr=new Uint8Array(raw.length);for(var q=0;q<raw.length;q++)arr[q]=raw.charCodeAt(q);var blob=new Blob([arr],{type:'application/gzip'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=b.name;a.click();URL.revokeObjectURL(a.href)}).catch(function(x){toast(x.message)});return}if(mode==='x'){if(confirm('Backup wirklich löschen?'))api('POST','/api/servers/'+id+'/backup-delete',{file:b.name}).then(function(){toast('Backup gelöscht')}).catch(function(x){toast(x.message)});return}if(confirm('Backup '+b.name+' wiederherstellen? Der Server muss gestoppt sein.'))call('POST',{file:b.name}).then(function(){toast('Backup wiederhergestellt')}).catch(function(x){toast(x.message)})}).catch(function(x){toast(x.message)});return}
+ if(action==='properties'){call('GET').then(function(j){var p=j.properties||{},keys=['motd','difficulty','gamemode','pvp','max-players','white-list','view-distance','simulation-distance'];var lines=keys.map(function(k){return k+'='+ (p[k]===undefined?'':p[k])}).join('\\n');var edited=prompt('server.properties bearbeiten (eine Einstellung pro Zeile, key=value):',lines);if(edited===null)return;var data={};edited.split(/\\r?\\n/).forEach(function(line){var at=line.indexOf('=');if(at>0)data[line.slice(0,at).trim()]=line.slice(at+1).trim()});call('POST',data).then(function(r){toast(r.restartRequired?'Gespeichert – Neustart erforderlich':'Einstellungen gespeichert');}).catch(function(x){toast(x.message)})}).catch(function(x){toast(x.message)});return}
+});
+
+$('servers').addEventListener('click',function(e){var a=e.target.getAttribute('data-act'),id=e.target.getAttribute('data-s');if(!a)return;
+ if(a==='console'){OPEN[id]=!OPEN[id];loadServers();return}
+ if(a==='send'){var inp=document.querySelector('[data-cmd="'+id+'"]');api('POST','/api/servers/'+id+'/command',{cmd:inp.value}).then(function(){inp.value='';loadServers()}).catch(function(x){toast(x.message)});return}
+ e.target.disabled=true;if(a==='backup')toast('Backup läuft …');
+ api('POST','/api/servers/'+id+'/'+a).then(function(j){toast(a==='backup'?'Backup erstellt: '+j.file:'OK');loadServers()}).catch(function(x){toast(x.message);loadServers()})});
+setInterval(function(){if(location.hash==='#dashboard')loadServers()},4000);
+$('drafts').addEventListener('click',function(e){var mk=e.target.getAttribute('data-mk');if(mk){var card=e.target.closest('.card');api('POST','/api/servers',{draftId:mk,ram:card.querySelector('[data-ram]').value,acceptEula:card.querySelector('[data-eula]').checked}).then(function(){drafts=drafts.filter(function(x){return x.id!==mk});toast('Server wird installiert');loadServers()}).catch(function(x){toast(x.message)});return}var id=e.target.getAttribute('data-del');if(!id)return;
+ api('DELETE','/api/drafts/'+id).then(function(){drafts=drafts.filter(function(x){return x.id!==id});renderDrafts();toast('Entwurf gelöscht')}).catch(function(x){toast(x.message)})});
+$('save').addEventListener('click',function(){
+ if(!ME){toast('Bitte zuerst anmelden');location.hash='login';return}
+ var n=$('f-name').value.trim();if(!n){toast('Bitte einen Servernamen eingeben');$('f-name').focus();return}
+ api('POST','/api/drafts',{name:n,desc:$('f-desc').value,ed:$('f-ed').value,sw:$('f-sw').value,ver:$('f-ver').value.trim(),pl:parseInt($('f-pl').value,10)})
+ .then(function(j){drafts.unshift(j.draft);renderDrafts();toast('Entwurf gespeichert');location.hash='dashboard'}).catch(function(x){toast(x.message)})});
+var reg=false;
+$('a-sw').addEventListener('click',function(){reg=!reg;$('a-u').hidden=$('a-ul').hidden=!reg;$('a-go').textContent=reg?'Registrieren':'Anmelden';$('a-sw').textContent=reg?'Ich habe schon ein Konto':'Neu registrieren'});
+$('a-go').addEventListener('click',function(){$('a-msg').textContent='';
+ api('POST',reg?'/api/register':'/api/login',{email:$('a-m').value,username:$('a-u').value,password:$('a-p').value}).then(function(j){$('a-p').value='';setUser(j.user);toast('Angemeldet')}).catch(function(x){$('a-msg').textContent=x.message})});
+$('a-out').addEventListener('click',function(){api('POST','/api/logout').then(function(){setUser(null)})});
+var RL={user:'User',moderator:'Moderator',admin:'Administrator',owner:'Owner'};
+function setUser(u){ME=u;$('out').hidden=!!u;$('in').hidden=!u;drafts=[];SV=[];renderServers();
+ $('adminnote').textContent='Kein Zugriff: Dieser Bereich ist nur für Owner und Administratoren.';$('users').innerHTML='';$('ucount').textContent='–';
+ if(!u){$('where').textContent='Zum Speichern bitte unter „Konto“ anmelden.';return}
+ $('role').textContent=RL[u.role];$('uname').textContent=u.username;$('umail').textContent=u.email;$('account-balance').textContent=(u.credits||0).toLocaleString('de-DE')+' Credits · '+(u.premium?'Premium':'Free');$('where').textContent='Entwürfe sind nur für dein Konto sichtbar.';
+ api('GET','/api/drafts').then(function(j){drafts=j.drafts.reverse();renderDrafts()}).catch(function(){});loadServers();
+ if(u.role==='admin'||u.role==='owner'){$('adminnote').textContent='Du hast '+(u.role==='owner'?'Owner':'Admin')+'-Rechte.';loadUsers();loadNodes()}}
+var jUsersCache=[];function loadUsers(){api('GET','/api/admin/users').then(function(j){jUsersCache=j.users;$('ucount').textContent=j.users.length;
+ $('users').innerHTML=j.users.map(function(x){var own=x.role==='owner'||x.id===ME.id;return '<div class="card" style="margin-bottom:10px"><h3>'+esc(x.username)+' <span class="tag">'+RL[x.role]+'</span>'+(x.banned?' <span class="tag warn">gesperrt</span>':'')+'</h3><p>'+esc(x.email)+' · '+(x.credits||0)+' Credits · '+(x.premium?'Premium':'Free')+'</p>'+(own?'':'<div class="cta">'+(ME.role==='owner'?'<select data-role="'+x.id+'" aria-label="Rolle"><option value="user">User</option><option value="moderator">Moderator</option><option value="admin">Administrator</option></select>':'')+'<button class="btn ghost" data-ban="'+x.id+'" data-b="'+(x.banned?0:1)+'">'+(x.banned?'Entsperren':'Sperren')+'</button><button class="btn ghost" data-credit="'+x.id+'">Credits geben</button><button class="btn ghost" data-premium="'+x.id+'">Premium umschalten</button></div>')+'</div>'}).join('');
+ document.querySelectorAll('[data-role]').forEach(function(sel){var u=j.users.find(function(z){return z.id===sel.getAttribute('data-role')});sel.value=u.role})}).catch(function(){})}
+$('users').addEventListener('change',function(e){var id=e.target.getAttribute('data-role');if(!id)return;api('POST','/api/admin/role',{id:id,role:e.target.value}).then(function(){toast('Rolle geändert');loadUsers()}).catch(function(x){toast(x.message)})});
+$('users').addEventListener('click',function(e){var id=e.target.getAttribute('data-ban'),credit=e.target.getAttribute('data-credit'),prem=e.target.getAttribute('data-premium');if(id){api('POST','/api/admin/ban',{id:id,banned:e.target.getAttribute('data-b')==='1'}).then(function(){loadUsers()}).catch(function(x){toast(x.message)});return}if(credit){var n=Number(prompt('Wie viele Credits vergeben?','1000'));if(!Number.isInteger(n)||n<=0)return;api('POST','/api/admin/grant',{id:credit,credits:n}).then(function(){toast('Credits vergeben');loadUsers()}).catch(function(x){toast(x.message)});return}if(prem){var days=Number(prompt('Premium aktivieren für Tage (0 = unbegrenzt), bei bereits aktivem Premium wird es deaktiviert.','30'));if(!Number.isInteger(days)||days<0)return;var user=jUsersCache.find(function(x){return x.id===prem});api('POST','/api/admin/grant',{id:prem,premium:!(user&&user.premium),days:days||null}).then(function(){toast('Premium geändert');loadUsers()}).catch(function(x){toast(x.message)})}});
+
+
+$('admin-settings').addEventListener('click',function(){api('GET','/api/admin/settings').then(function(j){var l=Number(prompt('Serverlimit pro Free-Konto:',j.settings.userServerLimit));if(!Number.isInteger(l)||l<1)return;var c=Number(prompt('Start-Credits für neue Konten:',j.settings.defaultCredits));if(!Number.isInteger(c)||c<0)return;return api('POST','/api/admin/settings',{userServerLimit:l,defaultCredits:c})}).then(function(){toast('Einstellungen gespeichert')}).catch(function(x){toast(x.message)})});
+$('admin-audit').addEventListener('click',function(){api('GET','/api/admin/audit').then(function(j){$('audit-output').textContent=j.entries.map(function(x){return new Date(x.at).toLocaleString('de-DE')+' | '+x.actor+' | '+x.action+' | '+x.target+' | '+x.details}).join('\n')||'Noch keine Einträge'}).catch(function(x){toast(x.message)})});
+
+function refreshLibraryServers(){var sel=$('lib-server'),prev=sel.value;sel.innerHTML='<option value="">Server auswählen</option>'+SV.map(function(s){return '<option value="'+esc(s.id)+'">'+esc(s.name)+'</option>'}).join('');if(SV.some(function(s){return s.id===prev}))sel.value=prev}
+function searchLibrary(){var q=$('lib-query').value.trim(),type=$('lib-type').value;$('lib-results').innerHTML='<p>Suche auf Modrinth …</p>';
+ api('GET','/api/library?type='+encodeURIComponent(type)+'&query='+encodeURIComponent(q)).then(function(j){var hits=j.hits||[];if(!hits.length){$('lib-results').innerHTML='<p>Keine Treffer gefunden.</p>';return}
+ $('lib-results').innerHTML=hits.map(function(x){return '<div class="card" style="margin:10px 0;display:flex;gap:12px;align-items:flex-start">'+(x.icon_url?'<img src="'+esc(x.icon_url)+'" alt="" width="48" height="48" style="border-radius:10px;object-fit:cover">':'')+'<div style="flex:1;min-width:0"><h3>'+esc(x.title)+'</h3><p>'+esc(x.description||'')+'</p><p>'+Number(x.downloads||0).toLocaleString('de-DE')+' Downloads · '+esc(x.slug)+'</p><button class="btn ghost" data-lib-install="'+esc(x.slug)+'" data-lib-type="'+type+'">Auf ausgewähltem Server installieren</button></div></div>'}).join('')
+ }).catch(function(e){$('lib-results').innerHTML='<p>'+esc(e.message)+'</p>'})}
+$('lib-search').addEventListener('click',searchLibrary);
+function checkLibraryUpdates(){var id=$('lib-server').value;if(!id){toast('Bitte zuerst einen Server auswählen');return}$('lib-update-results').innerHTML='<p>Prüfe Modrinth-Versionen …</p>';api('GET','/api/servers/'+id+'/updates').then(function(j){var a=j.updates||[];if(!a.length){$('lib-update-results').innerHTML='<p>Alle registrierten Mods und Plugins sind aktuell.</p>';return}$('lib-update-results').innerHTML='<h3>'+a.length+' Update(s) verfügbar</h3>'+a.map(function(x){return '<div class="card" style="margin:8px 0"><b>'+esc(x.projectId)+'</b><p>'+esc(x.oldVersion)+' → '+esc(x.newVersion)+'</p><button class="btn ghost" data-lib-update="'+esc(x.projectId)+'">Update installieren</button></div>'}).join('')}).catch(function(e){$('lib-update-results').innerHTML='<p>'+esc(e.message)+'</p>'})}
+$('lib-updates').addEventListener('click',checkLibraryUpdates);
+$('lib-update-results').addEventListener('click',function(e){var b=e.target.closest('[data-lib-update]');if(!b)return;var id=$('lib-server').value;if(!confirm('Update jetzt installieren? Der Server muss gestoppt sein.'))return;b.disabled=true;api('POST','/api/servers/'+id+'/update',{projectId:b.getAttribute('data-lib-update')}).then(function(r){toast(r.updated?'Update installiert: '+r.version:'Bereits aktuell');checkLibraryUpdates()}).catch(function(x){toast(x.message);b.disabled=false})});
+$('lib-query').addEventListener('keydown',function(e){if(e.key==='Enter')searchLibrary()});
+$('lib-results').addEventListener('click',function(e){var b=e.target.closest('[data-lib-install]');if(!b)return;var id=$('lib-server').value;if(!ME){toast('Bitte zuerst anmelden');return}if(!id){toast('Bitte zuerst einen Server auswählen');return}if(!confirm('Installation auf dem Server? Der Server muss gestoppt sein.'))return;b.disabled=true;api('POST','/api/servers/'+id+'/library',{slug:b.getAttribute('data-lib-install'),type:b.getAttribute('data-lib-type')}).then(function(r){toast(r.installedProjects+' Projekt(e) inkl. erforderlicher Abhängigkeiten installiert · Neustart erforderlich')}).catch(function(x){toast(x.message);b.disabled=false})});
+
+
+$('pack-search').addEventListener('click',function(){
+ var q=$('pack-query').value.trim(),platform=$('pack-platform').value;
+ $('pack-search-results').textContent='Suche Modpacks …';
+ var url=platform==='modrinth'?'/api/library?type=modpack&query='+encodeURIComponent(q):'/api/curseforge/modpacks?query='+encodeURIComponent(q);
+ api('GET',url).then(function(j){var hits=j.hits||[];if(!hits.length){$('pack-search-results').textContent='Keine Modpacks gefunden.';return}
+ $('pack-search-results').innerHTML=hits.map(function(x){
+  if(platform==='modrinth')return '<div class="card" style="margin:8px 0;display:flex;gap:10px">'+(x.icon_url?'<img src="'+esc(x.icon_url)+'" width="44" height="44" style="border-radius:8px">':'')+'<div style="flex:1"><b>'+esc(x.title)+'</b><p>'+esc(x.description||'')+'</p><button class="btn ghost" data-pack-modrinth="'+esc(x.slug)+'">Modpack installieren</button></div></div>';
+  var f=x.latestFiles&&x.latestFiles[0];return '<div class="card" style="margin:8px 0;display:flex;gap:10px">'+(x.logo?'<img src="'+esc(x.logo)+'" width="44" height="44" style="border-radius:8px">':'')+'<div style="flex:1"><b>'+esc(x.name)+'</b><p>'+esc(x.summary||'')+'</p>'+(f?'<button class="btn ghost" data-pack-curse="'+x.id+'" data-file="'+f.id+'">Neueste Datei installieren</button>':'<p>Keine passende Datei gelistet.</p>')+'</div></div>'
+ }).join('')
+ }).catch(function(e){$('pack-search-results').textContent=e.message})
+});
+$('pack-search-results').addEventListener('click',function(e){
+ var a=e.target.closest('[data-pack-modrinth],[data-pack-curse]');if(!a)return;
+ var id=$('lib-server').value;if(!id){toast('Bitte Server auswählen');return}
+ if(!confirm('Modpack installieren? Der Server muss gestoppt sein; vorher wird ein Backup erstellt.'))return;
+ a.disabled=true;var platform=a.hasAttribute('data-pack-modrinth')?'modrinth-project':'curseforge-project';
+ var data=platform==='modrinth-project'?{slug:a.getAttribute('data-pack-modrinth')}:{projectId:a.getAttribute('data-pack-curse'),fileId:a.getAttribute('data-file')};
+ api('POST','/api/servers/'+id+'/modpack/'+platform,data).then(function(r){$('pack-status').textContent='Installiert: '+r.modpack.name+' · '+r.loader+' · Minecraft '+r.minecraft+' · Backup '+r.backup;toast('Modpack installiert')}).catch(function(x){toast(x.message);a.disabled=false})
+});
+$('pack-check-update').addEventListener('click',function(){
+ var id=$('lib-server').value;if(!id){toast('Server auswählen');return}
+ api('GET','/api/servers/'+id+'/modpack/updates').then(function(j){
+  if(!j.supported){$('pack-status').textContent=j.message||'Updateprüfung nicht verfügbar';return}
+  if(!j.available){$('pack-status').textContent='Modpack ist auf dem neuesten Stand.';return}
+  $('pack-status').textContent='Neues Modpack-Update '+j.version+' verfügbar. ';
+  var b=document.createElement('button');b.className='btn ghost';b.textContent='Update installieren';b.onclick=function(){if(!confirm('Update installieren? Vorher wird ein Backup erstellt.'))return;b.disabled=true;api('POST','/api/servers/'+id+'/modpack/update',{}).then(function(r){$('pack-status').textContent='Modpack aktualisiert: '+r.modpack.version+' · Backup '+r.backup}).catch(function(e){toast(e.message);b.disabled=false})};$('pack-status').appendChild(b)
+ }).catch(function(e){$('pack-status').textContent=e.message})
+});
+function fileToBase64(file){return new Promise(function(resolve,reject){var reader=new FileReader();reader.onload=function(){var bytes=new Uint8Array(reader.result),parts=[],step=0x8000;for(var i=0;i<bytes.length;i+=step)parts.push(String.fromCharCode.apply(null,bytes.subarray(i,Math.min(i+step,bytes.length))));resolve(btoa(parts.join('')))};reader.onerror=reject;reader.readAsArrayBuffer(file)})}
+$('pack-install').addEventListener('click',async function(){
+ var id=$('lib-server').value,file=$('pack-file').files[0],platform=$('pack-platform').value;
+ if(!ME){toast('Bitte anmelden');return}if(!id){toast('Bitte Server auswählen');return}if(!file){toast('Bitte Modpack-Datei auswählen');return}
+ if(file.size>250*1024*1024){toast('Datei ist größer als 250 MB');return}
+ if(!confirm('Modpack installieren? Der Server muss gestoppt sein. Vorher wird ein Backup erstellt.'))return;
+ var btn=$('pack-install');btn.disabled=true;$('pack-status').textContent='Modpack wird hochgeladen und installiert …';
+ try{var archiveBase64=await fileToBase64(file);var result=await api('POST','/api/servers/'+id+'/modpack/'+platform,{archiveBase64:archiveBase64});
+ $('pack-status').textContent='Installiert: '+(result.modpack&&result.modpack.name||file.name)+' · '+result.loader+' · Minecraft '+result.minecraft+'. Backup: '+result.backup+'. Server jetzt neu starten.';toast('Modpack installiert');}
+ catch(e){$('pack-status').textContent='Fehler: '+e.message;toast(e.message)}
+ finally{btn.disabled=false}
+});
+$('pack-backups').addEventListener('click',function(){var id=$('lib-server').value;if(!id){toast('Bitte Server auswählen');return}api('GET','/api/servers/'+id+'/backups').then(function(j){var a=j.backups||[];$('pack-backup-list').innerHTML=a.length?'<h4>Vorhandene Backups</h4>'+a.map(function(x){return '<div class="card" style="margin:6px 0"><b>'+esc(x.name)+'</b><p>'+new Date(x.created).toLocaleString('de-DE')+'</p><button class="btn ghost" data-pack-restore="'+esc(x.name)+'">Diese Version wiederherstellen</button></div>'}).join(''):'<p>Keine Backups vorhanden.</p>'}).catch(function(e){toast(e.message)})});
+$('pack-backup-list').addEventListener('click',function(e){var b=e.target.closest('[data-pack-restore]');if(!b)return;var id=$('lib-server').value,file=b.getAttribute('data-pack-restore');if(!confirm('Backup wiederherstellen? Aktuelle Dateien werden überschrieben.'))return;api('POST','/api/servers/'+id+'/backup-restore',{file:file}).then(function(){toast('Backup wiederhergestellt')}).catch(function(x){toast(x.message)})});
+
+$('forgot-pass').addEventListener('click',function(){var email=$('a-m').value.trim();if(!email){toast('Bitte E-Mail eintragen');return}api('POST','/api/auth/forgot',{email:email}).then(function(j){toast(j.message||'E-Mail angefordert')}).catch(function(x){toast(x.message)})});
+$('reset-submit').addEventListener('click',function(){api('POST','/api/auth/reset',{token:$('reset-token').value.trim(),password:$('reset-new').value}).then(function(){toast('Passwort geändert. Bitte neu anmelden.');$('reset-panel').hidden=true}).catch(function(x){toast(x.message)})});
+if(location.hash.indexOf('#reset=')===0){$('reset-panel').hidden=false;$('reset-token').value=decodeURIComponent(location.hash.slice(7))}
+$('shop-products').addEventListener('click',function(e){var id=e.target.getAttribute('data-buy');if(!id)return;api('POST','/api/shop/checkout',{product:id}).then(function(j){if(j.url)location.href=j.url;else toast('Checkout-URL fehlt')}).catch(function(x){toast(x.message)})});
+function loadNodes(){api('GET','/api/admin/nodes').then(function(j){$('node-list').innerHTML=(j.nodes||[]).map(function(n){return '<div class="card" style="margin:8px 0"><b>'+esc(n.name)+'</b> · '+(n.online?'Online':'Offline')+' · '+esc(n.url)+' · '+n.serverCount+' Server <button class="btn ghost" data-node-remove="'+esc(n.id)+'">Entfernen</button></div>'}).join('')||'<p>Keine Nodes verbunden.</p>'}).catch(function(e){$('node-list').textContent=e.message})}
+$('node-list').addEventListener('click',function(e){var b=e.target.closest('[data-node-remove]');if(!b)return;var id=b.getAttribute('data-node-remove');if(!confirm('Node entfernen? Zugewiesene Server müssen vorher migriert/gelöscht sein.'))return;api('DELETE','/api/admin/nodes/'+id).then(function(){toast('Node entfernt');loadNodes()}).catch(function(x){toast(x.message)})});
+$('node-add').addEventListener('click',function(){var name=$('node-name').value,url=$('node-url').value,token=$('node-token').value;if(!name||!url||!token){toast('Alle Node-Daten ausfüllen');return}api('POST','/api/admin/nodes',{name:name,url:url,token:token}).then(function(){toast('Node verbunden');$('node-token').value='';loadNodes()}).catch(function(x){toast(x.message)})});
+var views=['home','create','dashboard','admin','login'];
+function route(){var raw=location.hash.slice(1),h=raw;if(['mods','plans'].indexOf(h)>=0)h='home';if(views.indexOf(h)<0)h='home';
+ views.forEach(function(v){$(v).classList.toggle('on',v===h)});
+ document.querySelectorAll('nav a').forEach(function(a){var v=a.getAttribute('data-v');a.classList.toggle('on',v===raw||(raw==='plans'&&v==='home'))});
+ if(raw==='mods'||raw==='plans'){setTimeout(function(){var target=$(raw);if(target)target.scrollIntoView({behavior:'smooth',block:'start'})},20)}else window.scrollTo(0,0)}
+window.addEventListener('hashchange',function(){route();if(location.hash==='#dashboard')loadServers()});route();
+api('GET','/api/me').then(function(j){setUser(j.user)}).catch(function(){setUser(null)});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
+</script>
+</body>
+</html>
